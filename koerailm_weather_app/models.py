@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class WeatherData(models.Model):
@@ -9,31 +10,23 @@ class WeatherData(models.Model):
     condition = models.CharField(max_length=50)
     timestamp = models.DateTimeField()
 
-
-class User(models.Model):
-    username = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField()
-
     def __str__(self):
-        return self.username
+        return f"Weather data for location {self.location_id} on {self.timestamp}"
 
 
 class FavouritePlace(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    place_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     rank = models.IntegerField()
     added_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.place_name} (Rank {self.rank})"
+        return f"{self.name} (Rank {self.rank})"
 
 
 class UserFeedback(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    feedback_text = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    text = models.TextField()
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -41,7 +34,8 @@ class UserFeedback(models.Model):
 
 
 class FolkSaying(models.Model):
-    folk_saying = models.TextField()
+    text = models.TextField()
+    month = models.IntegerField()
 
     def __str__(self):
-        return self.folk_saying
+        return self.text
