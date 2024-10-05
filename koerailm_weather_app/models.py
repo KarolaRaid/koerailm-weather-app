@@ -30,12 +30,12 @@ class UserFeedback(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Feedback submitted by {self.user.username} on {self.submitted_at}"
+        return f"Feedback submitted by {self.user} on {self.submitted_at}"
 
 
 class FolkSaying(models.Model):
     text = models.TextField()
-    month = models.IntegerField()
+    month = models.DateField(null=True)
 
     def __str__(self):
         return self.text

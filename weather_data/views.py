@@ -15,3 +15,5 @@ def index(request):
         context['weather_data'] = weather_data
     context['weather_data'] = "No weather data available"
     return render(request, 'weather_data.html', context)
+
+
