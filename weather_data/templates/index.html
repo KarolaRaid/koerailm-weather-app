@@ -5,7 +5,11 @@
     <title>Koerailm</title>
 </head>
 <body>
-<h1>{{ location }}</h1>
-<h3>{{ current_temperature  }}</h3>
+<h1>Tere tulemast Koerailma veebilehele!</h1>
+<h2>Asukoht: {{ location }}, {{ country }}</h2>
+<h3>Temperatuur: {{ temp_c }}°C. Tundub nagu: {{ feelslike_c }}°C. {{ condition_text }}. </h3>
+<h3>Niiskustase: {{ humidity }}%, sademed: {{ precip_mm }} mm.</h3>
+<h3>Tuul: {{ wind_kph }} km/h, tuulesuund: {{ wind_dir }}. </h3>
+<h3>Pilvisus: {{ cloud }}%.</h3>
 </body>
 </html>

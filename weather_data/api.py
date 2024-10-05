@@ -10,3 +10,5 @@ def get_weather_data(location):
         return response.json()
     print("Uh-oh! Looks like we can't fetch the weather right now. Maybe the internet dog chewed the cable?")
     return None
+
+
