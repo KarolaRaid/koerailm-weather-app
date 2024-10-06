@@ -1,6 +1,7 @@
 import requests
 from django.shortcuts import render
-from django.utils import timezone  # For timestamp management
+from django.http import HttpResponse
+from koerailm_weather_app.models import WeatherData
 from weather_data.api import get_weather_data
 
 from koerailm_weather_app.models import WeatherData
