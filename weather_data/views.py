@@ -40,7 +40,6 @@ def index(request):
             humidity=humidity,
             wind_speed=wind_kph,
             condition=condition_text,
-            timestamp=timezone.now()
         )
         weather_record.save()
 
