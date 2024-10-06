@@ -8,13 +8,10 @@ from koerailm_weather_app.models import WeatherData
 
 
 def index(request):
-    # Placeholder for now. Eventually use user's real location (via IP or browser API) as default
-    location = "Tallinn"
-
-    api_url = f"https://whatever-url-for-api.com/API_blabla{location}"
-    response = requests.get(api_url)
-
     context = {}
+    # Placeholder for now. Eventually use user's real location (via IP or browser API) as default or search result
+    location = 'Tallinn'
+    weather_data = get_weather_data(location)
 
     weather_data = get_weather_data(location)
 
