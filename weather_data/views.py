@@ -1,6 +1,9 @@
 import requests
 from django.shortcuts import render
+from django.utils import timezone  # For timestamp management
+from weather_data.api import get_weather_data
 
+from koerailm_weather_app.models import WeatherData
 
 
 def index(request):
@@ -12,34 +15,49 @@ def index(request):
 
     context = {}
 
-    if response.status_code == 200:
-        weather_data = response.json()
+    weather_data = get_weather_data(location)
+
+    country = weather_data.get('location').get('country')
+    temp_c = weather_data.get('current').get('temp_c')
+    condition_text = weather_data.get('current').get('condition').get('text')
+    wind_kph = weather_data.get('current').get('wind_kph')
+    wind_dir = weather_data.get('current').get('wind_dir')
+    precip_mm = weather_data.get('current').get('precip_mm')
+    humidity = weather_data.get('current').get('humidity')
+    cloud = weather_data.get('current').get('cloud')
+    feelslike_c = weather_data.get('current').get('feelslike_c')
 
 
-        temp_c = weather_data.get('current', {}).get('temp_c', None)
-        condition_text = weather_data.get('current', {}).get('condition', {}).get('text', None)
-        wind_kph = weather_data.get('current', {}).get('wind_kph', None)
-        humidity = weather_data.get('current', {}).get('humidity', None)
+    try:
+        # (you can modify this if needed)
+        location_id = 1
 
 
+        weather_record = WeatherData(
+            location_id=location_id,
+            temperature=temp_c,
+            humidity=humidity,
+            wind_speed=wind_kph,
+            condition=condition_text,
+            timestamp=timezone.now()
+        )
+        weather_record.save()
 
-        # Save weather data to the database
-        if temp_c is not None and condition_text is not None:
-            weather_record = weather_data(
-                location_id=location,
-                temperature=temp_c,
-                humidity=humidity,
-                wind_speed=wind_kph,
-                condition=condition_text,
+    except Exception as e:
+        print(f"Error saving weather data: {e}")
 
-            )
-            weather_record.save()
 
-        context['weather_data'] = weather_data
-    else:
-        context['weather_data'] = "No weather data available"
+    context['location'] = location
+    context['country'] = country
+    context['temp_c'] = temp_c
+    context['condition_text'] = condition_text
+    context['wind_kph'] = wind_kph
+    context['wind_dir'] = wind_dir
+    context['precip_mm'] = precip_mm
+    context['humidity'] = humidity
+    context['cloud'] = cloud
+    context['feelslike_c'] = feelslike_c
 
-    return render(request, 'weather_data.html', context)
-
+    return render(request, 'index.html', context)
 
 
