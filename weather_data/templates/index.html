@@ -1,15 +1,89 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Koerailm</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koerailm</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+
 <body>
-<h1>Tere tulemast Koerailma veebilehele!</h1>
-<h2>Asukoht: {{ location }}, {{ country }}</h2>
-<h3>Temperatuur: {{ temp_c }}°C. Tundub nagu: {{ feelslike_c }}°C. {{ condition_text }}. </h3>
-<h3>Niiskustase: {{ humidity }}%, sademed: {{ precip_mm }} mm.</h3>
-<h3>Tuul: {{ wind_kph }} km/h, tuulesuund: {{ wind_dir }}. </h3>
-<h3>Pilvisus: {{ cloud }}%.</h3>
+  <div class="container">
+    <header>
+      <img id="ai-seasonal-dog" src="https://placehold.co/170x170" alt="AI generated seasonal dog image">
+
+      <div class="title-subtitle-container">
+        <span id="main-title">KOERAILM</span>
+        <div id="subtitle">
+            koera|ilm<br>
+            halb, ebameeldiv, harilikult sajune ilm<br>
+            <div class="italic">
+              Sadas lörtsi: tõeline koerailm.<br>
+              Väljas oli kõva tuul ja sadas: säärase koerailmaga ei tahtnud keegi õue minna.
+            </div>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="list">
+          <li><a id="create-user" class="button box" href="#">Create User</a></li>
+          <li><a id="log-in-account" class="button box" href="#">Log In / Account</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      <input id="location-search" class="box" placeholder="Otsi asukohta...">
+
+      <div id="current-weather" class="box">
+          <h3>Asukoht: {{ location }}, {{ country }}</h3>
+          <img class="weather-image" src="https://placehold.co/50x50" alt="according weather image"><br>
+          Temperatuur: {{ temp_c }}°C. Tundub nagu: {{ feelslike_c }}°C.<br>
+          {{ condition_text }}.<br>
+          Niiskustase: {{ humidity }}%, sademed: {{ precip_mm }} mm.<br>
+          Tuul: {{ wind_kph }} km/h, tuulesuund: {{ wind_dir }}.<br>
+          Pilvisus: {{ cloud }}%.
+      </div>
+
+      <div id="dog-weather-index" class="box">
+        Koerailmaindeks:<br>0/5 koera.
+      </div>
+
+      <div id="folk-saying" class="box">
+        Suvel on suured silmad, talvel on pikad hambad.
+      </div>
+
+      <div id="radar">
+        <img src="https://placehold.co/900x400" alt="real-time radar image">
+      </div>
+
+      <div id="hourly-forecast" class="box">
+        Hourly Forecast (placeholder data)
+        <div id="hourly-forecast-elements">
+          <span>16:00 21°C Sunny</span><br>
+          <span>17:00 21°C Sunny</span><br>
+          <span>18:00 20°C Sunny</span><br>
+          <span>19:00 18°C Cloudy</span><br>
+          <span>20:00 17°C Cloudy</span>
+        </div>
+      </div>
+
+      <div id="daily-forecast" class="box">
+        Daily Forecast (placeholder data)
+        <div id="daily-forecast-elements">
+          <span>Tuesday 21°C / 14°C Sunny 4% rain</span><br>
+          <span>Wednesday 18°C / 13°C Rainy 60% rain</span><br>
+          <span>Thursday 16°C / 13°C Rainy 75% rain</span><br>
+          <span>Friday 16°C / 11°C Rainy 72% rain</span><br>
+          <span>Saturday 13°C / 7°C Rainy 70% rain</span>
+        </div>
+      </div>
+
+      <a id="user-feedback" class="button box" href="#">Give Us Feedback</a>
+    </div>
+  </div>
+
+
 </body>
 </html>
