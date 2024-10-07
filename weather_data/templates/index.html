@@ -34,25 +34,20 @@
     </header>
 
     <div class="content">
-      <input id="location-search" class="box" placeholder="Search by location...">
+      <input id="location-search" class="box" placeholder="Otsi asukohta...">
 
       <div id="current-weather" class="box">
-        <img class="weather-image" src="https://placehold.co/50x50" alt="according weather image"><br>
-        21°C<br>
-        Sunny<br>
-        0% rain<br>
-        Moderate wind<br>
-        <h1>API data and variables:</h1>>
-        <h1>Tere tulemast Koerailma veebilehele!</h1>
-        <h2>Asukoht: {{ location }}, {{ country }}</h2>
-        <h3>Temperatuur: {{ temp_c }}°C. Tundub nagu: {{ feelslike_c }}°C. {{ condition_text }}. </h3>
-        <h3>Niiskustase: {{ humidity }}%, sademed: {{ precip_mm }} mm.</h3>
-        <h3>Tuul: {{ wind_kph }} km/h, tuulesuund: {{ wind_dir }}. </h3>
-        <h3>Pilvisus: {{ cloud }}%.</h3>
+          <h3>Asukoht: {{ location }}, {{ country }}</h3>
+          <img class="weather-image" src="https://placehold.co/50x50" alt="according weather image"><br>
+          Temperatuur: {{ temp_c }}°C. Tundub nagu: {{ feelslike_c }}°C.<br>
+          {{ condition_text }}.<br>
+          Niiskustase: {{ humidity }}%, sademed: {{ precip_mm }} mm.<br>
+          Tuul: {{ wind_kph }} km/h, tuulesuund: {{ wind_dir }}.<br>
+          Pilvisus: {{ cloud }}%.
       </div>
 
       <div id="dog-weather-index" class="box">
-        Dog weather index:<br>0/5 dogs.
+        Koerailmaindeks:<br>0/5 koera.
       </div>
 
       <div id="folk-saying" class="box">
