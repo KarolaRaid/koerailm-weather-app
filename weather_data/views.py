@@ -10,7 +10,7 @@ def current_weather(request):
     context = {}
     # Placeholder for now. Eventually use user's real location (via IP or browser API) as default or search result
     #location = set_location()
-    location = request.GET.get('location_search', 'Nice')
+    location = request.GET.get('location_search') or 'Nice'
     weather_data = get_weather_data(location)
 
     country = weather_data.get('location').get('country')

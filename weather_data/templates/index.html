@@ -50,6 +50,26 @@
 
         </div>
 
+        <div>
+            <h4>Sinu asukoht (pikkus- ja laiuskoordinaadid):</h4>
+            <button class="button box" onclick="user_location()">Klikka asukoha saamiseks</button>
+            <p id="latitude-longitude"></p>
+
+            <script>
+                let getting_user_location = document.getElementById("latitude-longitude");
+                function user_location() {
+                    navigator.geolocation.getCurrentPosition(showLoc);
+                }
+                function showLoc(pos) {
+                    getting_user_location.innerHTML =
+                        "Pikkuskoordinaat: " +
+                        pos.coords.latitude +
+                        "<br>Laiuskoordinaat: " +
+                        pos.coords.longitude;
+                }
+            </script>
+        </div>
+
         <div id="dog-weather-index" class="box">
             Koerailmaindeks:<br>0/5 koera.
         </div>
