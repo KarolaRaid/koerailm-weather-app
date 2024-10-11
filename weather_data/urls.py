@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import current_weather, handle_user_location
+from .views import current_weather
 
 urlpatterns = [
     path('', views.current_weather, name='current_weather'),

@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from koerailm_weather_app.models import WeatherData
-from weather_data.api import get_weather_data
+from weather_data.api import get_weather_data, get_weather_data_by_geolocation
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -12,10 +12,18 @@ def current_weather(request):
 
     latitude = request.GET.get('latitude')
     longitude = request.GET.get('longitude')
+    #latitude = 37.5664
+    #longitude = 126.9997
 
-    location = request.GET.get('location_search') or 'Nice'
-    weather_data = get_weather_data(location)
 
+    if latitude and longitude:
+        weather_data = get_weather_data_by_geolocation(latitude, longitude)
+        location = weather_data.get('location').get('name')
+    else:
+        location = request.GET.get('location_search') or 'Nice'
+        weather_data = get_weather_data(location)
+
+    #city = weather_data.get('location').get('name')
     country = weather_data.get('location').get('country')
     temperature = weather_data.get('current').get('temp_c')
     condition_text = weather_data.get('current').get('condition').get('text')
@@ -130,12 +138,6 @@ def wind_direction_trans(wind_direction):
     return wind_direction_ee.get(wind_direction)
 
 
-def handle_user_location(request):
-    if request.method == "POST":
-        latitude = request.POST.get('latitude')
-        longitude = request.POST.get('longitude')
-
-        print(latitude, longitude)
 
 
 
