@@ -1,18 +1,29 @@
 import requests
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from koerailm_weather_app.models import WeatherData
-from weather_data.api import get_weather_data, set_location
+from weather_data.api import get_weather_data, get_weather_data_by_geolocation
+from django.views.decorators.csrf import csrf_exempt
 
 
 
 def current_weather(request):
     context = {}
-    # Placeholder for now. Eventually use user's real location (via IP or browser API) as default or search result
-    #location = set_location()
-    location = request.GET.get('location_search', 'Nice')
-    weather_data = get_weather_data(location)
 
+    latitude = request.GET.get('latitude')
+    longitude = request.GET.get('longitude')
+    #latitude = 37.5664
+    #longitude = 126.9997
+
+
+    if latitude and longitude:
+        weather_data = get_weather_data_by_geolocation(latitude, longitude)
+        location = weather_data.get('location').get('name')
+    else:
+        location = request.GET.get('location_search') or 'Nice'
+        weather_data = get_weather_data(location)
+
+    #city = weather_data.get('location').get('name')
     country = weather_data.get('location').get('country')
     temperature = weather_data.get('current').get('temp_c')
     condition_text = weather_data.get('current').get('condition').get('text')
@@ -38,6 +49,10 @@ def current_weather(request):
     context['cloud'] = cloud
     context['temperature_feelslike'] = temperature_feelslike
     context['icon'] = icon
+
+    context['latitude'] = latitude
+    context['longitude'] = longitude
+
 
     return render(request, 'index.html', context)
 
@@ -121,3 +136,8 @@ def wind_direction_trans(wind_direction):
         "NNW": "põhja-loodetuul (NNW)"
     }
     return wind_direction_ee.get(wind_direction)
+
+
+
+
+
