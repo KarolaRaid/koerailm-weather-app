@@ -56,16 +56,21 @@
             <p id="latitude-longitude"></p>
 
             <script>
+                let latitude, longitude;
+
                 let getting_user_location = document.getElementById("latitude-longitude");
+
                 function user_location() {
                     navigator.geolocation.getCurrentPosition(showLoc);
                 }
+
                 function showLoc(pos) {
+                    latitude = pos.coords.latitude;
+                    longitude = pos.coords.longitude;
+
                     getting_user_location.innerHTML =
-                        "Pikkuskoordinaat: " +
-                        pos.coords.latitude +
-                        "<br>Laiuskoordinaat: " +
-                        pos.coords.longitude;
+                        "Pikkuskoordinaat: " + latitude +
+                        "<br>Laiuskoordinaat: " + longitude;
                 }
             </script>
         </div>

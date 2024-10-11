@@ -121,3 +121,6 @@ def wind_direction_trans(wind_direction):
         "NNW": "põhja-loodetuul (NNW)"
     }
     return wind_direction_ee.get(wind_direction)
+
+
+
