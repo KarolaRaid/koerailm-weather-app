@@ -16,7 +16,7 @@ def current_weather(request):
     country = weather_data.get('location').get('country')
     temperature = weather_data.get('current').get('temp_c')
     condition_text = weather_data.get('current').get('condition').get('text')
-    wind = weather_data.get('current').get('wind_kph')
+    wind_kmh = weather_data.get('current').get('wind_kph')
     wind_direction = weather_data.get('current').get('wind_dir')
     precipitation = weather_data.get('current').get('precip_mm')
     humidity = weather_data.get('current').get('humidity')
@@ -30,8 +30,9 @@ def current_weather(request):
     context['country'] = country
     context['temperature'] = temperature
     context['condition_text'] = text_condition_trans(condition_text)
-    context['wind'] = wind
-    context['wind_direction'] = wind_direction
+    context['wind_kmh'] = wind_kmh
+    context['wind_ms'] = round(1000 * wind_kmh / 3600, 1)
+    context['wind_direction'] = wind_direction_trans(wind_direction)
     context['precipitation'] = precipitation
     context['humidity'] = humidity
     context['cloud'] = cloud
@@ -98,3 +99,25 @@ def text_condition_trans(condition_text):
         "Moderate or heavy snow with thunder": "Mõõdukas või tugev lumi äikesega"
     }
     return condition_text_ee.get(condition_text)
+
+
+def wind_direction_trans(wind_direction):
+    wind_direction_ee = {
+        "N": "põhjatuul (N)",
+        "NNE": "põhja-kirdetuul (NNE)",
+        "NE": "kirdetuul (NE)",
+        "ENE": "ida-kirdetuul (ENE)",
+        "E": "idatuul (E)",
+        "ESE": "ida-kagutuul (ESE)",
+        "SE": "kagutuul (SE)",
+        "SSE": "lõuna-kagutuul (SSE)",
+        "S": "lõunatuul (S)",
+        "SSW": "lõuna-edelatuul (SSW)",
+        "SW": "edelatuul (SW)",
+        "WSW": "lääne-edelatuul (WSW)",
+        "W": "läänetuul (W)",
+        "WNW": "lääne-loodetuul (WNW)",
+        "NW": "loodetuul (NW)",
+        "NNW": "põhja-loodetuul (NNW)"
+    }
+    return wind_direction_ee.get(wind_direction)
