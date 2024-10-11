@@ -44,7 +44,7 @@
             <img src="{{ icon }}" alt="current weather icon"><br>
             <h4>{{ condition_text }}.</h4>
             Temperatuur: {{ temperature }}°C. Tundub nagu: {{ temperature_feelslike }}°C.<br>
-            Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm.<br>
+            Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm/h.<br>
             Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s. Suund: {{ wind_direction }}.<br>
             Pilvisus: {{ cloud }}%.<br>
 
@@ -80,7 +80,7 @@
         </div>
 
         <div id="dog-weather-index" class="box">
-            Koerailmaindeks:<br>0/5 koera.
+            Koerailmaindeks:<br>{{ dog_rating }}/5 koera.
         </div>
 
         <div id="folk-saying" class="box italic">
