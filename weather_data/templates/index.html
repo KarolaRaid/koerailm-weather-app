@@ -53,11 +53,16 @@
         <div>
             <h4>Sinu asukoht (pikkus- ja laiuskoordinaadid):</h4>
             <button class="button box" onclick="user_location()">Klikka asukoha saamiseks</button>
+
+            <form id="user-location-form" method="POST" action="{% url 'handle_user_location' %}">
+                {% csrf_token %}
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
+            </form>
+
             <p id="latitude-longitude"></p>
 
             <script>
-                let latitude, longitude;
-
                 let getting_user_location = document.getElementById("latitude-longitude");
 
                 function user_location() {
@@ -65,12 +70,21 @@
                 }
 
                 function showLoc(pos) {
-                    latitude = pos.coords.latitude;
-                    longitude = pos.coords.longitude;
+                    const latitude = pos.coords.latitude;
+                    const longitude = pos.coords.longitude;
 
                     getting_user_location.innerHTML =
                         "Pikkuskoordinaat: " + latitude +
                         "<br>Laiuskoordinaat: " + longitude;
+
+
+                    document.getElementById('latitude').value = latitude;
+                    document.getElementById('longitude').value = longitude;
+
+                    document.getElementById('user-location-form').submit();
+
+                    document.getElementById('location-form').action = '/user_location/';
+
                 }
             </script>
         </div>
