@@ -1,5 +1,5 @@
 body {
-  font-family: Georgia;
+  font-family: Georgia, serif;
   background-color: #d5ecf9;
   color: #2270a3;
   box-sizing: border-box;
@@ -30,7 +30,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
 }
 
 #main-title {
@@ -41,6 +40,7 @@ header {
 #subtitle {
   text-align: justify;
   margin-top: 5px;
+  font-size: 14px
 }
 
 .title-subtitle-container {
@@ -90,10 +90,7 @@ a {
 .box {
   margin: 10px;
   border: #82c3ed solid 1px;
-  padding-bottom: 6px;
-  padding-left: 15px;
-  padding-top: 10px;
-  padding-right: 15px;
+  padding: 10px 15px 6px 15px;
   border-radius: 5px;
   background-color: #fcfdff;
   min-height: 25px;
@@ -106,7 +103,7 @@ a {
 }
 
 ::placeholder {
-  font-family: Georgia;
+  font-family: Georgia, serif;
   color: #2270a3;
   font-style: italic;
   font-size: 14px;
@@ -115,7 +112,6 @@ a {
 
 .italic {
   font-style: italic;
-  font-size: 14px;
 }
 
 #user-feedback {
