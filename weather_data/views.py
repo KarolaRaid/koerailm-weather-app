@@ -10,9 +10,10 @@ from django.views.decorators.csrf import csrf_exempt
 def current_weather(request):
     context = {}
 
-    handle_user_location(request)
+    latitude = request.GET.get('latitude')
+    longitude = request.GET.get('longitude')
 
-    location = request.GET.get('location_search') or request.GET.get('handle_user_location') or 'Nice'
+    location = request.GET.get('location_search') or 'Nice'
     weather_data = get_weather_data(location)
 
     country = weather_data.get('location').get('country')
@@ -40,6 +41,9 @@ def current_weather(request):
     context['cloud'] = cloud
     context['temperature_feelslike'] = temperature_feelslike
     context['icon'] = icon
+
+    context['latitude'] = latitude
+    context['longitude'] = longitude
 
 
     return render(request, 'index.html', context)
