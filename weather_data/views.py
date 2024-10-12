@@ -21,6 +21,7 @@ def current_weather(request):
     else:
         location = request.GET.get('location_search') or 'Nice'
         weather_data = get_weather_data(location)
+        location = weather_data.get('location').get('name')
 
 
     if weather_data:

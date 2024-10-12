@@ -13,15 +13,17 @@ def get_weather_data(location):
         search_results = search_response.json()
 
         if len(search_results) > 0:
-            entry_ee = None
+            entry_preferred = None
             for entry in search_results:
                 if entry['country'] == "Estonia":
-                    entry_ee = entry
+                    entry_preferred = entry
                     break
 
-            entry_preferred = entry_ee if entry_ee is not None else search_results[0]
+            if entry_preferred is None:
+                entry_preferred = search_results[0]
 
-            entry_preferred['name'] = location
+
+            location = entry_preferred['name']
 
 
             weather_url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={location}'
