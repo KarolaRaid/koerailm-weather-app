@@ -7,13 +7,12 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 
+
 def current_weather(request):
     context = {}
 
     latitude = request.GET.get('latitude')
     longitude = request.GET.get('longitude')
-    #latitude = 37.5664
-    #longitude = 126.9997
 
 
     if latitude and longitude:
@@ -23,37 +22,39 @@ def current_weather(request):
         location = request.GET.get('location_search') or 'Nice'
         weather_data = get_weather_data(location)
 
-    #city = weather_data.get('location').get('name')
-    country = weather_data.get('location').get('country')
-    temperature = weather_data.get('current').get('temp_c')
-    condition_text = weather_data.get('current').get('condition').get('text')
-    wind_kmh = weather_data.get('current').get('wind_kph')
-    wind_direction = weather_data.get('current').get('wind_dir')
-    precipitation = weather_data.get('current').get('precip_mm')
-    humidity = weather_data.get('current').get('humidity')
-    cloud = weather_data.get('current').get('cloud')
-    temperature_feelslike = weather_data.get('current').get('feelslike_c')
-    icon = weather_data.get('current').get('condition').get('icon')
+
+    if weather_data:
+        #city = weather_data.get('location').get('name')
+        country = weather_data.get('location').get('country')
+        temperature = weather_data.get('current').get('temp_c')
+        condition_text = weather_data.get('current').get('condition').get('text')
+        wind_kmh = weather_data.get('current').get('wind_kph')
+        wind_direction = weather_data.get('current').get('wind_dir')
+        precipitation = weather_data.get('current').get('precip_mm')
+        humidity = weather_data.get('current').get('humidity')
+        cloud = weather_data.get('current').get('cloud')
+        temperature_feelslike = weather_data.get('current').get('feelslike_c')
+        icon = weather_data.get('current').get('condition').get('icon')
 
 
-    # condition_text + wind_dir need to be translated (simple dictionary)
-    context['location'] = location
-    context['country'] = country
-    context['temperature'] = temperature
-    context['condition_text'] = text_condition_trans(condition_text)
-    context['wind_kmh'] = wind_kmh
-    context['wind_ms'] = round(1000 * wind_kmh / 3600, 1)
-    context['wind_direction'] = wind_direction_trans(wind_direction)
-    context['precipitation'] = precipitation
-    context['humidity'] = humidity
-    context['cloud'] = cloud
-    context['temperature_feelslike'] = temperature_feelslike
-    context['icon'] = icon
+        # condition_text + wind_dir need to be translated (simple dictionary)
+        context['location'] = location
+        context['country'] = country
+        context['temperature'] = temperature
+        context['condition_text'] = text_condition_trans(condition_text)
+        context['wind_kmh'] = wind_kmh
+        context['wind_ms'] = round(1000 * wind_kmh / 3600, 1)
+        context['wind_direction'] = wind_direction_trans(wind_direction)
+        context['precipitation'] = precipitation
+        context['humidity'] = humidity
+        context['cloud'] = cloud
+        context['temperature_feelslike'] = temperature_feelslike
+        context['icon'] = icon
 
-    context['latitude'] = latitude
-    context['longitude'] = longitude
+        context['latitude'] = latitude
+        context['longitude'] = longitude
 
-    context['dog_rating'] = dog_weather_index(wind_kmh, precipitation)
+        context['dog_rating'] = dog_weather_index(wind_kmh, precipitation)
 
 
     return render(request, 'index.html', context)
@@ -192,3 +193,6 @@ def dog_weather_index(wind_kmh, precipitation):
     dog_rating = round((0.25 * wind_value) + (0.75 * rain_value))
 
     return dog_rating
+
+
+
