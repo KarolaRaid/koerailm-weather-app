@@ -21,7 +21,7 @@ def current_weather(request):
     else:
         location = request.GET.get('location_search') or 'Nice'
         weather_data = get_weather_data(location)
-        location = weather_data.get('location').get('name')
+
 
 
     if weather_data:
@@ -69,7 +69,7 @@ def text_condition_trans(condition_text):
     condition_text_ee = {
         "Sunny": "Päikeseline",
         "Clear": "Selge",
-        "Partly cloudy": "Kohati pilvine",
+        "Partly Cloudy": "Kohati pilvine",
         "Cloudy": "Pilvine",
         "Overcast": "Pilvkate",
         "Mist": "Kerge udu",

@@ -2,8 +2,9 @@ import requests
 from decouple import config
 
 
-
 def get_weather_data(location):
+    is_estonia = False
+
     api_key = config('WEATHER_API_KEY')
 
     search_url = f'http://api.weatherapi.com/v1/search.json?key={api_key}&q={location}'
@@ -14,19 +15,18 @@ def get_weather_data(location):
 
         if len(search_results) > 0:
             entry_preferred = None
-            for entry in search_results:
-                if entry['country'] == "Estonia":
-                    entry_preferred = entry
+            for result in search_results:
+                entry_preferred = result
+                if "Estonia" == result.get('country'):
+                    entry_preferred = result
+                    is_estonia = True
                     break
 
-            if entry_preferred is None:
-                entry_preferred = search_results[0]
-
-
-            location = entry_preferred['name']
-
+            location = entry_preferred.get('name')
 
             weather_url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={location}'
+            if is_estonia:
+                weather_url += ',EE'
             weather_response = requests.get(weather_url)
             if weather_response.status_code == 200:
                 return weather_response.json()
@@ -44,5 +44,3 @@ def get_weather_data_by_geolocation(latitude, longitude):
     if response.status_code == 200:
         return response.json()
     return None
-
-
