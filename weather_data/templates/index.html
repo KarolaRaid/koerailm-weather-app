@@ -47,6 +47,7 @@
                 Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm/h<br>
                 Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s, suund: {{ wind_direction }}<br>
                 Pilvisus: {{ cloud }}%<br>
+                {{ latitude }}, {{ longitude }}
 
             </div>
 
@@ -65,6 +66,10 @@
             <div id="hourly-forecast" class="box">
                 Hourly Forecast (placeholder data)
                 <div id="hourly-forecast-elements">
+                    <h1>1. {{ hour }}</h1>
+                    <h1>2. {{ humidity_hourly }}</h1>
+                    <h1>1. {{ location_h }}</h1>
+                    <h1>2. {{ latitude_h }}</h1>
                     <span>16:00 21°C Sunny</span><br>
                     <span>17:00 21°C Sunny</span><br>
                     <span>18:00 20°C Sunny</span><br>
