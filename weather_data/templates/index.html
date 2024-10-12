@@ -11,7 +11,8 @@
 <body>
 <div class="container">
     <header>
-        <img id="ai-seasonal-dog" src="https://i.imghippo.com/files/0TmWx1728769205.png" alt="AI generated seasonal dog image">
+        <img id="ai-seasonal-dog" src="https://i.imghippo.com/files/0TmWx1728769205.png"
+             alt="AI generated seasonal dog image">
 
         <div class="title-subtitle-container">
             <span id="main-title">KOERAILM</span>
@@ -59,6 +60,45 @@
                 Koerailmaindeks:<br>{{ dog_rating }}/5 koera.
                 {% if dog_rating == 0 %}
                     <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                {% endif %}
+                {% if dog_rating == 1 %}
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                {% endif %}
+                {% if dog_rating == 2 %}
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                {% endif %}
+                {% if dog_rating == 3 %}
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                {% endif %}
+                {% if dog_rating == 4 %}
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                {% endif %}
+                {% if dog_rating == 5 %}
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
                 {% endif %}
             </div>
 
@@ -78,17 +118,6 @@
                     <span>18:00 20°C Sunny</span><br>
                     <span>19:00 18°C Cloudy</span><br>
                     <span>20:00 17°C Cloudy</span>
-                </div>
-            </div>
-
-            <div id="daily-forecast" class="box">
-                Daily Forecast (placeholder data)
-                <div id="daily-forecast-elements">
-                    <span>Tuesday 21°C / 14°C Sunny 4% rain</span><br>
-                    <span>Wednesday 18°C / 13°C Rainy 60% rain</span><br>
-                    <span>Thursday 16°C / 13°C Rainy 75% rain</span><br>
-                    <span>Friday 16°C / 11°C Rainy 72% rain</span><br>
-                    <span>Saturday 13°C / 7°C Rainy 70% rain</span>
                 </div>
             </div>
         {% endif %}
