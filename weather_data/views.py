@@ -22,9 +22,9 @@ def current_weather(request):
         location = request.GET.get('location_search') or 'Nice'
         weather_data = get_weather_data(location)
 
-
-
-    if weather_data:
+    if weather_data and 'error' in weather_data:
+        context['error'] = weather_data['error']
+    elif weather_data:
         #city = weather_data.get('location').get('name')
         country = weather_data.get('location').get('country')
         temperature = weather_data.get('current').get('temp_c')
@@ -39,7 +39,7 @@ def current_weather(request):
 
 
         # condition_text + wind_dir need to be translated (simple dictionary)
-        context['location'] = location
+        context['location'] = location.capitalize()
         context['country'] = country
         context['temperature'] = temperature
         context['condition_text'] = text_condition_trans(condition_text)

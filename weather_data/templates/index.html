@@ -39,6 +39,12 @@
             <button type="submit" class="button box">Otsi</button>
         </form>
 
+        {% if error %}
+        <div id="error-message" class="box" style="color:red;">
+            <strong>{{ error }}</strong>
+        </div>
+        {% else %}
+
         <div id="current-weather" class="box">
             <h3>Asukoht: {{ location }}, {{ country }}</h3>
             <img src="{{ icon }}" alt="current weather icon"><br>
@@ -112,7 +118,7 @@
                 <span>Saturday 13°C / 7°C Rainy 70% rain</span>
             </div>
         </div>
-
+        {% endif %}
         <a id="user-feedback" class="button box" href="#">Give Us Feedback</a>
     </div>
 </div>

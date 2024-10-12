@@ -31,6 +31,9 @@ def get_weather_data(location):
             if weather_response.status_code == 200:
                 return weather_response.json()
 
+        else:
+            return {'error': 'Asukohta ei leitud. Palun proovige uuesti.'}
+
     return None
 
 
