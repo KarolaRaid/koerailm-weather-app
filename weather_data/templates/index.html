@@ -24,105 +24,69 @@
                 </div>
             </div>
         </div>
-
-        <nav>
-            <ul class="list">
-                <li><a id="create-user" class="button box" href="#">Create User</a></li>
-                <li><a id="log-in-account" class="button box" href="#">Log In / Account</a></li>
-            </ul>
-        </nav>
     </header>
 
     <div class="content">
         <form method="GET" action={% url 'current_weather' %}>
-            <input id="location-search" class="box" type="text" name="location_search" placeholder="Sisesta asukoht..." required>
+            <input id="location-search" class="box" type="text" name="location_search" placeholder="Sisesta asukoht..."
+                   required>
             <button type="submit" class="button box">Otsi</button>
         </form>
 
         {% if error %}
-        <div id="error-message" class="box" style="color:red;">
-            <strong>{{ error }}</strong>
-        </div>
+            <div id="error-message" class="box" style="color:red;">
+                <strong>{{ error }}</strong>
+            </div>
         {% else %}
 
-        <div id="current-weather" class="box">
-            <h3>Asukoht: {{ location }}, {{ country }}</h3>
-            <img src="{{ icon }}" alt="current weather icon"><br>
-            <h4>{{ condition_text }}.</h4>
-            Temperatuur: {{ temperature }}°C. Tundub nagu: {{ temperature_feelslike }}°C.<br>
-            Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm/h.<br>
-            Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s. Suund: {{ wind_direction }}.<br>
-            Pilvisus: {{ cloud }}%.<br>
+            <div id="current-weather" class="box">
+                <h3>Asukoht: {{ location }}, {{ country }}</h3>
+                <img src="{{ icon }}" alt="current weather icon"><br>
+                <h4>{{ condition_text }}</h4>
+                Temperatuur: {{ temperature }}°C, tundub nagu: {{ temperature_feelslike }}°C<br>
+                Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm/h<br>
+                Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s, suund: {{ wind_direction }}<br>
+                Pilvisus: {{ cloud }}%<br>
 
-        </div>
-
-        <div>
-            <h4>Sinu asukoht (pikkus- ja laiuskoordinaadid):</h4>
-            <button class="button box" onclick="user_location()">Klikka asukoha saamiseks</button>
-
-            <p id="latitude-longitude">
-                {% if latitude and longitude %}
-                    Pikkuskoordinaat: {{ latitude }}<br>Laiuskoordinaat: {{ longitude }}
-                {% endif %}
-            </p>
-
-            <script>
-                function user_location() {
-                    navigator.geolocation.getCurrentPosition(showLoc);
-                }
-
-                function showLoc(pos) {
-                    const latitude = pos.coords.latitude;
-                    const longitude = pos.coords.longitude;
-
-                    document.getElementById('latitude-longitude').innerHTML =
-                        "Pikkuskoordinaat: " + latitude +
-                        "<br>Laiuskoordinaat: " + longitude;
-
-                    window.location.href = `?latitude=${latitude}&longitude=${longitude}`;
-
-                }
-            </script>
-        </div>
-
-        <div id="dog-weather-index" class="box">
-            Koerailmaindeks:<br>{{ dog_rating }}/5 koera.
-        </div>
-
-        <div id="folk-saying" class="box italic">
-            Suvel on suured silmad, talvel on pikad hambad.
-        </div>
-
-        <div id="radar">
-            <img src="https://placehold.co/900x400" alt="real-time radar image">
-        </div>
-
-        <div id="hourly-forecast" class="box">
-            Hourly Forecast (placeholder data)
-            <div id="hourly-forecast-elements">
-                <span>16:00 21°C Sunny</span><br>
-                <span>17:00 21°C Sunny</span><br>
-                <span>18:00 20°C Sunny</span><br>
-                <span>19:00 18°C Cloudy</span><br>
-                <span>20:00 17°C Cloudy</span>
             </div>
-        </div>
 
-        <div id="daily-forecast" class="box">
-            Daily Forecast (placeholder data)
-            <div id="daily-forecast-elements">
-                <span>Tuesday 21°C / 14°C Sunny 4% rain</span><br>
-                <span>Wednesday 18°C / 13°C Rainy 60% rain</span><br>
-                <span>Thursday 16°C / 13°C Rainy 75% rain</span><br>
-                <span>Friday 16°C / 11°C Rainy 72% rain</span><br>
-                <span>Saturday 13°C / 7°C Rainy 70% rain</span>
+            <div>
+                <button class="button box" onclick="user_location()">Sinu asukoht</button>
             </div>
-        </div>
+
+            <div id="dog-weather-index" class="box">
+                Koerailmaindeks:<br>{{ dog_rating }}/5 koera.
+            </div>
+
+            <div id="folk-saying" class="box italic">
+                folk saying here
+            </div>
+
+            <div id="hourly-forecast" class="box">
+                Hourly Forecast (placeholder data)
+                <div id="hourly-forecast-elements">
+                    <span>16:00 21°C Sunny</span><br>
+                    <span>17:00 21°C Sunny</span><br>
+                    <span>18:00 20°C Sunny</span><br>
+                    <span>19:00 18°C Cloudy</span><br>
+                    <span>20:00 17°C Cloudy</span>
+                </div>
+            </div>
+
+            <div id="daily-forecast" class="box">
+                Daily Forecast (placeholder data)
+                <div id="daily-forecast-elements">
+                    <span>Tuesday 21°C / 14°C Sunny 4% rain</span><br>
+                    <span>Wednesday 18°C / 13°C Rainy 60% rain</span><br>
+                    <span>Thursday 16°C / 13°C Rainy 75% rain</span><br>
+                    <span>Friday 16°C / 11°C Rainy 72% rain</span><br>
+                    <span>Saturday 13°C / 7°C Rainy 70% rain</span>
+                </div>
+            </div>
         {% endif %}
-        <a id="user-feedback" class="button box" href="#">Give Us Feedback</a>
     </div>
 </div>
 
-
+<script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
