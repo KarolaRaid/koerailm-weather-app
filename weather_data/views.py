@@ -2,6 +2,7 @@ from django.shortcuts import render
 from weather_data.api import get_weather_data, get_weather_data_by_geolocation
 from weather_data.translations import text_condition_trans, wind_direction_trans
 from weather_data.dog_weather_index import dog_weather_index
+from koerailm_weather_app.models import FolkSaying
 
 
 def current_weather(request):
@@ -60,6 +61,14 @@ def current_weather(request):
     return render(request, 'index.html', context)
 
 
+def index(request):
+    # Retrieve all folk sayings from the database
+    folk_sayings = FolkSaying.objects.all()
 
+    # Add them to the context to pass them to the template
+    context = {
+        'folk_sayings': folk_sayings
+    }
 
+    return render(request, 'index.html', context)
 

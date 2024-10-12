@@ -103,7 +103,11 @@
             </div>
 
             <div id="folk-saying" class="box italic">
-                folk saying here
+                <ul>
+                    {% for saying in folk_sayings %}
+                        <li>{{ saying.text }}{% if saying.month %} - Month: {{ saying.month|date:"F" }}{% endif %}</li>
+                    {% endfor %}
+                </ul>
             </div>
 
             <div id="hourly-forecast" class="box">
