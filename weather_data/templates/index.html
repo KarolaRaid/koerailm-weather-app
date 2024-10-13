@@ -58,56 +58,27 @@
 
             <div id="dog-weather-index" class="box">
                 Koerailmaindeks:<br>{{ dog_rating }}/5 koera.
-                {% if dog_rating == 0 %}
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                {% endif %}
-                {% if dog_rating == 1 %}
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                {% endif %}
-                {% if dog_rating == 2 %}
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                {% endif %}
-                {% if dog_rating == 3 %}
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                {% endif %}
-                {% if dog_rating == 4 %}
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                {% endif %}
-                {% if dog_rating == 5 %}
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                {% endif %}
+
+                {% for i in "01234" %}
+                    {% if forloop.counter0 < dog_rating %}
+                        <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                    {% else %}
+                        <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                    {% endif %}
+                {% endfor %}
             </div>
 
+
+
             <div id="folk-saying" class="box italic">
-                <ul>
-                    {% for saying in folk_sayings %}
-                        <li>{{ saying.text }}{% if saying.month %} - Month: {{ saying.month|date:"F" }}{% endif %}</li>
-                    {% endfor %}
-                </ul>
+                {% if current_folk_saying %}
+                    <div class="folk-saying">
+                        <p>{{ current_folk_saying.text }}</p>
+                    </div>
+                {% else %}
+                    <p>No folk saying for this month.</p>
+                {% endif %}
+
             </div>
 
             <div id="hourly-forecast" class="box">

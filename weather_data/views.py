@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from weather_data.api import get_weather_data, get_weather_data_by_geolocation
 from weather_data.translations import text_condition_trans, wind_direction_trans
@@ -57,6 +58,10 @@ def current_weather(request):
         context['longitude'] = longitude
 
         context['dog_rating'] = dog_weather_index(wind_kmh, precipitation)
+
+        current_month = datetime.now().month
+        folk_saying = FolkSaying.objects.filter(month__month=current_month).first()
+        context['current_folk_saying'] = folk_saying
 
     return render(request, 'index.html', context)
 
