@@ -1,5 +1,6 @@
 import requests
 from decouple import config
+from django.db.models.fields import return_None
 
 
 def get_weather_data(location):
@@ -22,19 +23,20 @@ def get_weather_data(location):
                     is_estonia = True
                     break
 
-            location = entry_preferred.get('name')
 
-            weather_url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={location}'
+            location = entry_preferred.get('name')
+            weather_url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={location}&days=2'
+
             if is_estonia:
                 weather_url += ',EE'
             weather_response = requests.get(weather_url)
             if weather_response.status_code == 200:
                 return weather_response.json()
-
         else:
             return {'error': 'Asukohta ei leitud. Palun proovige uuesti.'}
 
     return None
+
 
 
 def get_weather_data_by_geolocation(latitude, longitude):
@@ -43,7 +45,9 @@ def get_weather_data_by_geolocation(latitude, longitude):
 
     api_key = config('WEATHER_API_KEY')
     url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={lat},{lon}'
+
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
     return None
+

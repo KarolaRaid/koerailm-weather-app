@@ -1,7 +1,9 @@
+from datetime import datetime
 from django.shortcuts import render
 from weather_data.api import get_weather_data, get_weather_data_by_geolocation
 from weather_data.translations import text_condition_trans, wind_direction_trans
 from weather_data.dog_weather_index import dog_weather_index
+from koerailm_weather_app.models import FolkSaying
 
 
 def current_weather(request):
@@ -14,8 +16,12 @@ def current_weather(request):
         weather_data = get_weather_data_by_geolocation(latitude, longitude)
     elif 'location_search' in request.GET:
         weather_data = get_weather_data(request.GET.get('location_search'))
+        latitude = weather_data.get('location').get('lat')
+        longitude = weather_data.get('location').get('lon')
     else:
         weather_data = get_weather_data('Kuressaare')
+        latitude = weather_data.get('location').get('lat')
+        longitude = weather_data.get('location').get('lon')
 
     location = weather_data.get('location').get('name')
 
@@ -32,6 +38,8 @@ def current_weather(request):
         cloud = weather_data.get('current').get('cloud')
         temperature_feelslike = weather_data.get('current').get('feelslike_c')
         icon = weather_data.get('current').get('condition').get('icon')
+        latitude = round(float(latitude), 4)
+        longitude = round(float(longitude), 4)
 
         context['location'] = location
         context['country'] = country
@@ -51,4 +59,21 @@ def current_weather(request):
 
         context['dog_rating'] = dog_weather_index(wind_kmh, precipitation)
 
+        current_month = datetime.now().month
+        folk_saying = FolkSaying.objects.filter(month__month=current_month).first()
+        context['current_folk_saying'] = folk_saying
+
     return render(request, 'index.html', context)
+
+
+def index(request):
+    # Retrieve all folk sayings from the database
+    folk_sayings = FolkSaying.objects.all()
+
+    # Add them to the context to pass them to the template
+    context = {
+        'folk_sayings': folk_sayings
+    }
+
+    return render(request, 'index.html', context)
+
