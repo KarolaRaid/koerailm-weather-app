@@ -1,42 +1,50 @@
 import requests
 from decouple import config
-from django.db.models.fields import return_None
 
 
-def get_weather_data(location):
-    is_estonia = False
-
+def get_weather_data(location, is_estonia):
     api_key = config('WEATHER_API_KEY')
+    weather_url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&days=2&q={location}'
 
-    search_url = f'http://api.weatherapi.com/v1/search.json?key={api_key}&q={location}'
+    if is_estonia:
+        weather_url += ',EE'
+
+    weather_response = requests.get(weather_url)
+
+    if weather_response.status_code == 200:
+        return weather_response.json()
+
+    return None
+
+
+def get_search_location(location_search):
+    is_estonia = False
+    api_key = config('WEATHER_API_KEY')
+    search_url = f'http://api.weatherapi.com/v1/search.json?key={api_key}&q={location_search}'
     search_response = requests.get(search_url)
 
     if search_response.status_code == 200:
         search_results = search_response.json()
 
         if len(search_results) > 0:
-            entry_preferred = None
+            preferred_entry = None
+
             for result in search_results:
-                entry_preferred = result
+                preferred_entry = result
+
                 if "Estonia" == result.get('country'):
-                    entry_preferred = result
+                    preferred_entry = result
                     is_estonia = True
                     break
 
+            location_search = preferred_entry.get('name')
 
-            location = entry_preferred.get('name')
-            weather_url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={location}&days=2'
-
-            if is_estonia:
-                weather_url += ',EE'
-            weather_response = requests.get(weather_url)
-            if weather_response.status_code == 200:
-                return weather_response.json()
         else:
             return {'error': 'Asukohta ei leitud. Palun proovige uuesti.'}
+    else:
+        return {'error': 'Asukohta ei leitud. Palun proovige uuesti.'}
 
-    return None
-
+    return location_search, is_estonia
 
 
 def get_weather_data_by_geolocation(latitude, longitude):
@@ -44,10 +52,12 @@ def get_weather_data_by_geolocation(latitude, longitude):
     lon = round(float(longitude), 4)
 
     api_key = config('WEATHER_API_KEY')
-    url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={lat},{lon}'
+    url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={lat},{lon}'
 
     response = requests.get(url)
+
     if response.status_code == 200:
         return response.json()
+
     return None
 
