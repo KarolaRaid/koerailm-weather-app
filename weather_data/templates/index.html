@@ -31,7 +31,8 @@
         <form method="GET" action={% url 'current_weather' %}>
             <input id="location-search" class="box" type="text" name="location_search" placeholder="Sisesta asukoht..."
                    required>
-            <button type="submit" class="button box">Otsi</button>
+            <span><button type="submit" class="button box">Otsi</button></span>
+            <span><button class="button box" onclick="user_location()">Sinu asukoht</button></span>
         </form>
 
         {% if error %}
@@ -48,24 +49,22 @@
                 Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm/h<br>
                 Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s, suund: {{ wind_direction }}<br>
                 Pilvisus: {{ cloud }}%<br>
-                {{ latitude }}, {{ longitude }}
 
             </div>
 
-            <div>
-                <button class="button box" onclick="user_location()">Sinu asukoht</button>
-            </div>
+
 
             <div id="dog-weather-index" class="box">
-                Koerailmaindeks:<br>{{ dog_rating }}/5 koera.
-
-                {% for i in "01234" %}
-                    {% if forloop.counter0 < dog_rating %}
-                        <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
-                    {% else %}
-                        <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
-                    {% endif %}
-                {% endfor %}
+                Koerailmaindeks:<br>
+                <div id="paws">
+                    {% for i in "01234" %}
+                        {% if forloop.counter0 < dog_rating %}
+                            <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                        {% else %}
+                            <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
 
 
@@ -82,11 +81,11 @@
             </div>
 
             <div id="hourly-forecast" class="box">
-                Hourly Forecast (placeholder data)
+                Hourly Forecast
                 <div id="hourly-forecast-elements">
-                    <h1>1. {{ hour }}</h1>
-                    <h1>2. {{ humidity_hourly }}</h1>
-                    <h1>1. {{ location_h }}</h1>
+                    <h1>1. {{ current_hour_value }}</h1>
+                    <h1>2. {{ current_hour_index }}</h1>
+                    <h1>1. {{ tomorrow_04 }}</h1>
                     <h1>2. {{ latitude_h }}</h1>
                     <span>16:00 21°C Sunny</span><br>
                     <span>17:00 21°C Sunny</span><br>
