@@ -2,7 +2,7 @@ def text_condition_trans(condition_text):
     condition_text_ee = {
         "Sunny": "Päikeseline",
         "Clear": "Selge",
-        "Partly Cloudy": "Kohati pilvine",
+        "Partly cloudy": "Kohati pilvine",
         "Cloudy": "Pilvine",
         "Overcast": "Pilvkate",
         "Mist": "Kerge udu",
