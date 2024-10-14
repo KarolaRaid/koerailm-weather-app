@@ -68,4 +68,34 @@ def current_weather(request):
         current_folk_saying = FolkSaying.objects.filter(month__month=current_month).first()
         context['current_folk_saying'] = current_folk_saying
 
+        # current_hour_actual = datetime.now().hour
+        # current_hour_api = weather_data.get('forecast').get('forecastday')[0].get('hour')[0].get('time')[11:13]
+        # context['current_hour'] = current_hour_api
+
+        current_hour_index = 0
+        current_hour_value = None
+
+        # Getting the index of current hour for all hourly calculations
+        for i in weather_data.get('forecast').get('forecastday')[0].get('hour'):
+            if int(i.get('time')[11:13]) == datetime.now().hour:
+                current_hour_value = i.get('time')[11:13]
+                break
+            else:
+                current_hour_index += 1
+
+        tomorrow_04 = weather_data.get('forecast').get('forecastday')[1].get('hour')[4].get('time')
+        context['tomorrow_04'] = tomorrow_04
+
+
+
+        context['current_hour_value'] = current_hour_value
+
+
+
+
+
+
+
+
+
     return render(request, 'index.html', context)
