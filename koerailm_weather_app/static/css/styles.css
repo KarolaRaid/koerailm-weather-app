@@ -43,7 +43,6 @@ header {
 }
 
 .title-subtitle-container {
-  margin-left: 100px;
   display: inline-block;
 }
 
@@ -62,8 +61,8 @@ a {
 }
 
 .weather-image {
-  width: 50px;
-  height: 50px;
+  max-width: 90px;
+  max-height: 90px;
 }
 
 .box {
@@ -76,9 +75,9 @@ a {
   box-shadow: 0 0 3px 0 #3c88ba;
 }
 
-#location-search {
+.location-search {
   border-radius: 20px;
-  width: 95%;
+  width: 75%;
 }
 
 ::placeholder {
@@ -89,12 +88,108 @@ a {
   opacity: 90%;
 }
 
+.cw {
+  margin: 10px;
+}
+
+h3 {
+  margin-left: 10px;
+}
+
+.cw_condition {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.weather-image {
+  float: right;
+  margin-right: 680px;
+}
+
+.cw_temperature {
+  font-weight: bold;
+}
+
+.feelslike {
+  font-size: 14px;
+}
+
+
 .italic {
   font-style: italic;
 }
 
-#dog-paw {
-  width: 40px;
-  height: auto;
+#paws {
+  margin: 7px;
 }
 
+#dog-paw {
+  width: 35px;
+  height: auto;
+  padding: 1px;
+}
+
+#hourly-forecast-elements {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.folk-saying {
+  margin: 10px;
+}
+
+.hourly-forecast-data {
+    flex: 1;
+    max-width: 100px;
+    text-align: center;
+    border: 1px solid #82c3ed;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+}
+
+.h_hour {
+  font-weight: normal;
+  padding: 1px;
+  color: #3c88ba;
+}
+
+.h_temp {
+  font-weight: bold;
+  padding: 1px;
+  margin-bottom: 2px;
+}
+
+.h_hum {
+  font-size: 13px;
+  padding: 1px;
+  color: #3c88ba;
+}
+
+
+#error-message {
+  color: red;
+  text-align: center;
+}
+
+h4 {
+  font-style: normal;
+  margin: 10px;
+}
+
+.clickable {
+  cursor: pointer;
+  margin: 2px;
+}
+
+footer {
+  text-align: center;
+}
+
+.contact-link {
+  font-weight: bold;
+  color: #0e659e;
+}

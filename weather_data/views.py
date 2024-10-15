@@ -68,10 +68,6 @@ def current_weather(request):
         current_folk_saying = FolkSaying.objects.filter(month__month=current_month).first()
         context['current_folk_saying'] = current_folk_saying
 
-        # current_hour_actual = datetime.now().hour
-        # current_hour_api = weather_data.get('forecast').get('forecastday')[0].get('hour')[0].get('time')[11:13]
-        # context['current_hour'] = current_hour_api
-
         current_hour_index = 0
         current_hour_value = None
 
@@ -84,13 +80,10 @@ def current_weather(request):
                 current_hour_index += 1
         context['current_hour_value'] = current_hour_value
 
-        # tomorrow_04 = weather_data.get('forecast').get('forecastday')[1].get('hour')[4].get('time')
-        # context['tomorrow_04'] = tomorrow_04
-
         hourly_weather_data = []
         context['hourly_weather_data'] = hourly_weather_data
 
-        for offset in range(0, 5):
+        for offset in range(0, 8):
             index = current_hour_index + offset
 
             forecastday_index = index // 24
