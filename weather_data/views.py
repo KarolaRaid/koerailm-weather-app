@@ -82,20 +82,27 @@ def current_weather(request):
                 break
             else:
                 current_hour_index += 1
-
-        tomorrow_04 = weather_data.get('forecast').get('forecastday')[1].get('hour')[4].get('time')
-        context['tomorrow_04'] = tomorrow_04
-
-
-
         context['current_hour_value'] = current_hour_value
 
+        # tomorrow_04 = weather_data.get('forecast').get('forecastday')[1].get('hour')[4].get('time')
+        # context['tomorrow_04'] = tomorrow_04
 
+        hourly_weather_data = []
+        context['hourly_weather_data'] = hourly_weather_data
 
+        for offset in range(0, 5):
+            index = current_hour_index + offset
 
+            forecastday_index = index // 24
+            hour_index_within_day = index % 24
 
-
-
-
+            hour_data = weather_data.get('forecast').get('forecastday')[forecastday_index].\
+                        get('hour')[hour_index_within_day]
+            hourly_weather_data.append({
+                'h_hour': hour_data.get('time')[11:16],
+                'h_temperature': hour_data.get('temp_c'),
+                'h_icon': hour_data.get('condition').get('icon'),
+                'h_humidity': hour_data.get('humidity')
+            })
 
     return render(request, 'index.html', context)

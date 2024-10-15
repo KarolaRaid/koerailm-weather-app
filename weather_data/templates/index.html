@@ -81,17 +81,17 @@
             </div>
 
             <div id="hourly-forecast" class="box">
-                Hourly Forecast
+                <h4>Hourly Forecast</h4>
                 <div id="hourly-forecast-elements">
-                    <h1>1. {{ current_hour_value }}</h1>
-                    <h1>2. {{ current_hour_index }}</h1>
-                    <h1>1. {{ tomorrow_04 }}</h1>
-                    <h1>2. {{ latitude_h }}</h1>
-                    <span>16:00 21°C Sunny</span><br>
-                    <span>17:00 21°C Sunny</span><br>
-                    <span>18:00 20°C Sunny</span><br>
-                    <span>19:00 18°C Cloudy</span><br>
-                    <span>20:00 17°C Cloudy</span>
+                    {% for weather in hourly_weather_data %}
+                        <div class="hourly-forecast-data">
+                        <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
+                        {{ weather.h_hour }}<br>
+                        {{ weather.h_temperature }}°C<br>
+                        Humidity: {{ weather.h_humidity }}%<br>
+                        <br>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         {% endif %}
