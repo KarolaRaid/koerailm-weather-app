@@ -11,8 +11,10 @@
 <body>
 <div class="container">
     <header>
-        <img id="ai-seasonal-dog" src="https://i.imghippo.com/files/0TmWx1728769205.png"
-             alt="AI generated seasonal dog image">
+        <a href="/">
+            <img id="ai-seasonal-dog" src="https://i.imghippo.com/files/0TmWx1728769205.png"
+                alt="AI generated seasonal dog image">
+        </a>
 
         <div class="title-subtitle-container">
             <span id="main-title">KOERAILM</span>
@@ -29,39 +31,60 @@
 
     <div class="content">
         <form method="GET" action={% url 'current_weather' %}>
-            <input id="location-search" class="box" type="text" name="location_search" placeholder="Sisesta asukoht..."
+            <input class="box location-search" type="text" name="location_search" placeholder="Otsi asukohta..."
                    required>
-            <span><button type="submit" class="button box">Otsi</button></span>
-            <span><button class="button box" onclick="user_location()">Sinu asukoht</button></span>
+            <span><button type="submit" class="button box clickable">Otsi</button></span>
+            <span><button class="button box clickable" onclick="user_location()">Sinu asukoht</button></span>
         </form>
 
         {% if error %}
-            <div id="error-message" class="box" style="color:red;">
+            <div id="error-message" class="box">
                 <strong>{{ error }}</strong>
             </div>
         {% else %}
 
             <div id="current-weather" class="box">
-                <h3>Asukoht: {{ location }}, {{ country }}</h3>
-                <img src="{{ icon }}" alt="current weather icon"><br>
-                <h4>{{ condition_text }}</h4>
-                Temperatuur: {{ temperature }}°C, tundub nagu: {{ temperature_feelslike }}°C<br>
-                Niiskustase: {{ humidity }}%, sademed: {{ precipitation }} mm/h<br>
-                Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s, suund: {{ wind_direction }}<br>
-                Pilvisus: {{ cloud }}%<br>
+                <h2>Asukoht: {{ location }}, {{ country }}</h2>
+                <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"><br></span>
+                <span class="cw_temperature cw">
+                    Temperatuur: {{ temperature }}°C<br>
+                </span>
+                <span class="cw_temperature cw feelslike">
+                Tundub nagu: {{ temperature_feelslike }}°C<br><br>
+                </span>
+                <span class="cw_condition cw">{{ condition_text }}</span>
+
+
+                <div class="cw_humidity cw">
+                Niiskustase: {{ humidity }}%
+                </div>
+                <div class="cw_humidity cw">
+                Sademed: {{ precipitation }} mm/h<br>
+                </div>
+                <div class="cw_wind cw">
+                    Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s
+                </div>
+                <div class="cw_wind cw">
+                    Tuulesuund: {{ wind_direction }}
+                </div>
+                <div class="cw_cloud cw">
+                Pilvisus: {{ cloud }}%
+                </div>
 
             </div>
 
 
 
             <div id="dog-weather-index" class="box">
-                Koerailmaindeks:<br>
+                <h4>Koerailmaindeks</h4>
                 <div id="paws">
                     {% for i in "01234" %}
                         {% if forloop.counter0 < dog_rating %}
-                            <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png" alt="dog rating full">
+                            <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
+                                 alt="dog rating full">
                         {% else %}
-                            <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png" alt="dog rating zero">
+                            <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png"
+                                 alt="dog rating zero">
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -69,7 +92,8 @@
 
 
 
-            <div id="folk-saying" class="box italic">
+            <div class="box italic folk-saying">
+                <h4>Eesti vanasõna</h4>
                 {% if current_folk_saying %}
                     <div class="folk-saying">
                         <p>{{ current_folk_saying.text }}</p>
@@ -86,9 +110,9 @@
                     {% for weather in hourly_weather_data %}
                         <div class="hourly-forecast-data">
                         <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
-                        {{ weather.h_hour }}<br>
-                        {{ weather.h_temperature }}°C<br>
-                        Humidity: {{ weather.h_humidity }}%<br>
+                            <div class="h_hour">{{ weather.h_hour }}</div>
+                            <div class="h_temp">{{ weather.h_temperature }}°C</div>
+                            <div class="h_hum">Humidity: {{ weather.h_humidity }}%</div>
                         <br>
                         </div>
                     {% endfor %}
@@ -96,7 +120,17 @@
             </div>
         {% endif %}
     </div>
+<footer>
+    <p>Let's connect! Find the developer on
+        <a href="https://www.linkedin.com/in/karola-raid-3347052a7/" target="_blank"
+           class="contact-link">LinkedIn</a>.
+    </p>
+</footer>
+
 </div>
+
+
+
 
 <script src="{% static 'js/scripts.js' %}"></script>
 </body>
