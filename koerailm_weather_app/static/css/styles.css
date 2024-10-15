@@ -1,132 +1,132 @@
 body {
-  font-family: Georgia, serif;
-  background-color: #d5ecf9;
-  color: #2270a3;
-  box-sizing: border-box;
+    font-family: Georgia, serif;
+    background-color: #d5ecf9;
+    color: #2270a3;
+    box-sizing: border-box;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background-image: url("https://zeevector.com/wp-content/uploads/Background/Cloud-background-HD.jpg");
-  padding: 10px;
-  box-shadow: 0 0 5px 0;
-  border-radius: 5px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-image: url("https://zeevector.com/wp-content/uploads/Background/Cloud-background-HD.jpg");
+    padding: 10px;
+    box-shadow: 0 0 5px 0;
+    border-radius: 5px;
 }
 
 header img {
-  width: 170px;
-  height: 170px;
-  float: left;
+    width: 170px;
+    height: 170px;
+    float: left;
 }
 
 header {
-  text-align: left;
-  padding: 10px;
-  height: 170px;
-  border-bottom: 2px solid white;
-  position: static;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    text-align: left;
+    padding: 10px;
+    height: 170px;
+    border-bottom: 2px solid white;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #main-title {
-  color: #3c88ba;
-  font-size: 50px;
+    color: #3c88ba;
+    font-size: 50px;
 }
 
 #subtitle {
-  text-align: justify;
-  margin-top: 5px;
-  font-size: 14px
+    text-align: justify;
+    margin-top: 5px;
+    font-size: 14px
 }
 
 .title-subtitle-container {
-  display: inline-block;
+    display: inline-block;
 }
 
 header::after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .button {
-  color: #0e659e;
+    color: #0e659e;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .weather-image {
-  max-width: 90px;
-  max-height: 90px;
+    max-width: 90px;
+    max-height: 90px;
 }
 
 .box {
-  margin: 10px;
-  border: #82c3ed solid 1px;
-  padding: 10px 15px 6px 15px;
-  border-radius: 5px;
-  background-color: #fcfdff;
-  min-height: 25px;
-  box-shadow: 0 0 3px 0 #3c88ba;
+    margin: 10px;
+    border: #82c3ed solid 1px;
+    padding: 10px 15px 6px 15px;
+    border-radius: 5px;
+    background-color: #fcfdff;
+    min-height: 25px;
+    box-shadow: 0 0 3px 0 #3c88ba;
 }
 
 .location-search {
-  border-radius: 20px;
-  width: 75%;
+    border-radius: 20px;
+    width: 75%;
 }
 
 ::placeholder {
-  font-family: Georgia, serif;
-  color: #2270a3;
-  font-style: italic;
-  font-size: 14px;
-  opacity: 90%;
+    font-family: Georgia, serif;
+    color: #2270a3;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 90%;
 }
 
 .cw {
-  margin: 10px;
+    margin: 10px;
 }
 
 h3 {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .cw_condition {
-  font-weight: bold;
-  font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .weather-image {
-  float: right;
-  margin-right: 680px;
+    float: right;
+    margin-right: 680px;
 }
 
 .cw_temperature {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .feelslike {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 
 .italic {
-  font-style: italic;
+    font-style: italic;
 }
 
 #paws {
-  margin: 7px;
+    margin: 7px;
 }
 
 #dog-paw {
-  width: 35px;
-  height: auto;
-  padding: 1px;
+    width: 35px;
+    height: auto;
+    padding: 1px;
 }
 
 #hourly-forecast-elements {
@@ -137,7 +137,7 @@ h3 {
 }
 
 .folk-saying {
-  margin: 10px;
+    margin: 10px;
 }
 
 .hourly-forecast-data {
@@ -152,44 +152,44 @@ h3 {
 }
 
 .h_hour {
-  font-weight: normal;
-  padding: 1px;
-  color: #3c88ba;
+    font-weight: normal;
+    padding: 1px;
+    color: #3c88ba;
 }
 
 .h_temp {
-  font-weight: bold;
-  padding: 1px;
-  margin-bottom: 2px;
+    font-weight: bold;
+    padding: 1px;
+    margin-bottom: 2px;
 }
 
 .h_hum {
-  font-size: 13px;
-  padding: 1px;
-  color: #3c88ba;
+    font-size: 13px;
+    padding: 1px;
+    color: #3c88ba;
 }
 
 
 #error-message {
-  color: red;
-  text-align: center;
+    color: red;
+    text-align: center;
 }
 
 h4 {
-  font-style: normal;
-  margin: 10px;
+    font-style: normal;
+    margin: 10px;
 }
 
 .clickable {
-  cursor: pointer;
-  margin: 2px;
+    cursor: pointer;
+    margin: 2px;
 }
 
 footer {
-  text-align: center;
+    text-align: center;
 }
 
 .contact-link {
-  font-weight: bold;
-  color: #0e659e;
+    font-weight: bold;
+    color: #0e659e;
 }

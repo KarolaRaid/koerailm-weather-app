@@ -89,8 +89,8 @@ def current_weather(request):
             forecastday_index = index // 24
             hour_index_within_day = index % 24
 
-            hour_data = weather_data.get('forecast').get('forecastday')[forecastday_index].\
-                        get('hour')[hour_index_within_day]
+            hour_data = weather_data.get('forecast').get('forecastday')[forecastday_index]. \
+                get('hour')[hour_index_within_day]
             hourly_weather_data.append({
                 'h_hour': hour_data.get('time')[11:16],
                 'h_temperature': hour_data.get('temp_c'),

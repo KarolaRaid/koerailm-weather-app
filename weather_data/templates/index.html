@@ -13,7 +13,7 @@
     <header>
         <a href="/">
             <img id="ai-seasonal-dog" src="https://i.imghippo.com/files/0TmWx1728769205.png"
-                alt="AI generated seasonal dog image">
+                 alt="AI generated seasonal dog image">
         </a>
 
         <div class="title-subtitle-container">
@@ -56,10 +56,10 @@
 
 
                 <div class="cw_humidity cw">
-                Niiskustase: {{ humidity }}%
+                    Niiskustase: {{ humidity }}%
                 </div>
                 <div class="cw_humidity cw">
-                Sademed: {{ precipitation }} mm/h<br>
+                    Sademed: {{ precipitation }} mm/h<br>
                 </div>
                 <div class="cw_wind cw">
                     Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s
@@ -68,7 +68,7 @@
                     Tuulesuund: {{ wind_direction }}
                 </div>
                 <div class="cw_cloud cw">
-                Pilvisus: {{ cloud }}%
+                    Pilvisus: {{ cloud }}%
                 </div>
 
             </div>
@@ -109,27 +109,25 @@
                 <div id="hourly-forecast-elements">
                     {% for weather in hourly_weather_data %}
                         <div class="hourly-forecast-data">
-                        <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
+                            <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
                             <div class="h_hour">{{ weather.h_hour }}</div>
                             <div class="h_temp">{{ weather.h_temperature }}°C</div>
                             <div class="h_hum">Niiskus: {{ weather.h_humidity }}%</div>
-                        <br>
+                            <br>
                         </div>
                     {% endfor %}
                 </div>
             </div>
         {% endif %}
     </div>
-<footer>
-    <p>Võta julgelt arendajaga ühendust
-        <a href="https://www.linkedin.com/in/karola-raid-3347052a7/" target="_blank"
-           class="contact-link">LinkedInis</a>
-    </p>
-</footer>
+    <footer>
+        <p>Võta julgelt arendajaga ühendust
+            <a href="https://www.linkedin.com/in/karola-raid-3347052a7/" target="_blank"
+               class="contact-link">LinkedInis</a>
+        </p>
+    </footer>
 
 </div>
-
-
 
 
 <script src="{% static 'js/scripts.js' %}"></script>

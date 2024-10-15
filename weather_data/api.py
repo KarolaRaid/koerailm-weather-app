@@ -60,4 +60,3 @@ def get_weather_data_by_geolocation(latitude, longitude):
         return response.json()
 
     return None
-
