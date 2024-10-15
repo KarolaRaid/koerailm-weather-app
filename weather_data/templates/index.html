@@ -46,13 +46,13 @@
             <div id="current-weather" class="box">
                 <h2>Asukoht: {{ location }}, {{ country }}</h2>
                 <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"><br></span>
+                <span class="cw_condition cw">{{ condition_text }}</span>
                 <span class="cw_temperature cw">
                     Temperatuur: {{ temperature }}°C<br>
                 </span>
                 <span class="cw_temperature cw feelslike">
-                Tundub nagu: {{ temperature_feelslike }}°C<br><br>
+                Tundub nagu: {{ temperature_feelslike }}°C<br>
                 </span>
-                <span class="cw_condition cw">{{ condition_text }}</span>
 
 
                 <div class="cw_humidity cw">
@@ -112,7 +112,7 @@
                         <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
                             <div class="h_hour">{{ weather.h_hour }}</div>
                             <div class="h_temp">{{ weather.h_temperature }}°C</div>
-                            <div class="h_hum">Humidity: {{ weather.h_humidity }}%</div>
+                            <div class="h_hum">Niiskus: {{ weather.h_humidity }}%</div>
                         <br>
                         </div>
                     {% endfor %}
@@ -121,9 +121,9 @@
         {% endif %}
     </div>
 <footer>
-    <p>Let's connect! Find the developer on
+    <p>Võta julgelt arendajaga ühendust
         <a href="https://www.linkedin.com/in/karola-raid-3347052a7/" target="_blank"
-           class="contact-link">LinkedIn</a>.
+           class="contact-link">LinkedInis</a>
     </p>
 </footer>
 
