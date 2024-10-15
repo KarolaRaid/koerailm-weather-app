@@ -92,6 +92,13 @@
                     <span>18:00 20°C Sunny</span><br>
                     <span>19:00 18°C Cloudy</span><br>
                     <span>20:00 17°C Cloudy</span>
+                    {% for weather in hourly_weather_data %}
+                        <div class="hourly-forecast-data">
+                        Temperature: {{ weather.h_temperature }}°C<br>
+                        Time: {{ weather.h_hour }}<br
+                        </div>
+                    {% endfor %}
+
                 </div>
             </div>
         {% endif %}
