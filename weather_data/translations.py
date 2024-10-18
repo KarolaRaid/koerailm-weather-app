@@ -1,3 +1,33 @@
+def weekday_convert(isoweekday):
+    weekday_ee = {
+        1: "Esmaspäev",
+        2: "Teisipäev",
+        3: "Kolmapäev",
+        4: "Neljapäev",
+        5: "Reede",
+        6: "Laupäev",
+        7: "Pühapäev"
+    }
+    return weekday_ee.get(isoweekday)
+
+def month_convert(month):
+    month_ee = {
+        1: "jaanuar",
+        2: "veebruar",
+        3: "märts",
+        4: "aprill",
+        5: "mai",
+        6: "juuni",
+        7: "juuli",
+        8: "august",
+        9: "september",
+        10: "oktoober",
+        11: "november",
+        12: "detsember"
+    }
+    return month_ee.get(month)
+
+
 def text_condition_trans(condition_text):
     condition_text_ee = {
         "Sunny": "Päikeseline",

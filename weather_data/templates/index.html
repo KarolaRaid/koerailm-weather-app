@@ -31,7 +31,7 @@
 
     <div class="content">
         <form method="GET" action={% url 'current_weather' %}>
-            <input class="box location-search" type="text" name="location_search" placeholder="Otsi asukohta..."
+            <input class="box location-search" type="text" name="location_search" placeholder='Otsi asukohta... (täpsemaks otsinguks proovi lisada riigikood, nt. "Riga, LV")'
                    required>
             <span><button type="submit" class="button box clickable">Otsi</button></span>
             <span><button class="button box clickable" onclick="user_location()">Sinu asukoht</button></span>
@@ -105,7 +105,7 @@
             </div>
 
             <div id="hourly-forecast" class="box">
-                <h4>Hourly Forecast</h4>
+                <h4>Tunniprognoos</h4>
                 <div id="hourly-forecast-elements">
                     {% for weather in hourly_weather_data %}
                         <div class="hourly-forecast-data">

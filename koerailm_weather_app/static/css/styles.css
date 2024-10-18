@@ -82,7 +82,7 @@ a {
 
 ::placeholder {
     font-family: Georgia, serif;
-    color: #2270a3;
+    color: #307db0;
     font-style: italic;
     font-size: 14px;
     opacity: 90%;
@@ -92,7 +92,7 @@ a {
     margin: 10px;
 }
 
-h3 {
+h2 {
     margin-left: 10px;
 }
 
