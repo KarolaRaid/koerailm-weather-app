@@ -96,6 +96,10 @@ h2 {
     margin-left: 10px;
 }
 
+.cw_date {
+    font-size: 14px;
+}
+
 .cw_condition {
     font-weight: bold;
     font-size: 16px;

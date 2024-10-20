@@ -45,7 +45,8 @@
 
             <div id="current-weather" class="box">
                 <h2>Asukoht: {{ location }}, {{ country }}</h2>
-                <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"><br></span>
+                <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"></span>
+                <div class="cw_date cw">{{ date_today }}</div>
                 <span class="cw_condition cw">{{ condition_text }}</span>
                 <span class="cw_temperature cw">
                     Temperatuur: {{ temperature }}°C<br>
