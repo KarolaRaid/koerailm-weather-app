@@ -31,7 +31,8 @@
 
     <div class="content">
         <form method="GET" action={% url 'current_weather' %}>
-            <input class="box location-search" type="text" name="location_search" placeholder='Otsi asukohta... (täpsemaks otsinguks proovi lisada riigikood, nt. "Riga, LV")'
+            <input class="box location-search" type="text" name="location_search"
+                   placeholder='Otsi asukohta... (täpsemaks otsinguks proovi lisada riigikood, nt. "Riga, LV")'
                    required>
             <span><button type="submit" class="button box clickable">Otsi</button></span>
             <span><button class="button box clickable" onclick="user_location()">Sinu asukoht</button></span>
@@ -47,7 +48,7 @@
                 <h2>Asukoht: {{ location }}, {{ country }}</h2>
                 <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"></span>
                 <div class="cw_date cw">{{ date_today }}</div>
-                <span class="cw_condition cw">{{ condition_text }}</span>
+                <span class="cw_condition cw">{{ condition_text }}<br></span>
                 <span class="cw_temperature cw">
                     Temperatuur: {{ temperature }}°C<br>
                 </span>
@@ -114,6 +115,17 @@
                             <div class="h_hour">{{ weather.h_hour }}</div>
                             <div class="h_temp">{{ weather.h_temperature }}°C</div>
                             <div class="h_hum">Niiskus: {{ weather.h_humidity }}%</div>
+                            <div class="paws">
+                                {% for i in "01234" %}
+                                    {% if forloop.counter0 < weather.h_dog_rating %}
+                                        <img id="h-dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
+                                             alt="dog rating full">
+                                    {% else %}
+                                        <img id="h-dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png"
+                                             alt="dog rating zero">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                             <br>
                         </div>
                     {% endfor %}
