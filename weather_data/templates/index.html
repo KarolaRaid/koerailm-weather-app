@@ -55,13 +55,11 @@
                 <span class="cw_temperature cw feelslike">
                 Tundub nagu: {{ temperature_feelslike }}°C<br>
                 </span>
-
-
-                <div class="cw_humidity cw">
-                    Niiskustase: {{ humidity }}%
-                </div>
                 <div class="cw_humidity cw">
                     Sademed: {{ precipitation }} mm/h<br>
+                </div>
+                <div class="cw_humidity cw">
+                    Niiskustase: {{ humidity }}%
                 </div>
                 <div class="cw_wind cw">
                     Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s
@@ -79,7 +77,8 @@
 
             <div id="dog-weather-index" class="box">
                 <h4>Koerailmaindeks</h4>
-                <div id="paws">
+                <h6>Koerailmaindeks hindab ilma 0-5 käpa skaalal, arvestades sademeid ja tuule kiirust.</h6>
+                <div class="paws">
                     {% for i in "01234" %}
                         {% if forloop.counter0 < dog_rating %}
                             <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
@@ -114,7 +113,6 @@
                             <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
                             <div class="h_hour">{{ weather.h_hour }}</div>
                             <div class="h_temp">{{ weather.h_temperature }}°C</div>
-                            <div class="h_hum">Niiskus: {{ weather.h_humidity }}%</div>
                             <div class="paws">
                                 {% for i in "01234" %}
                                     {% if forloop.counter0 < weather.h_dog_rating %}

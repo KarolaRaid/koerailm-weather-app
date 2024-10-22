@@ -98,8 +98,8 @@ def current_weather(request):
                 'h_hour': hour_data.get('time')[11:16],
                 'h_temperature': hour_data.get('temp_c'),
                 'h_icon': hour_data.get('condition').get('icon'),
-                'h_humidity': hour_data.get('humidity'),
-                'h_dog_rating': dog_weather_index(hour_data.get('wind_kph'), hour_data.get('precip_mm'))
+                'h_dog_rating': dog_weather_index(hour_data.get('wind_kph'),
+                                                  hour_data.get('precip_mm'))
             })
 
     return render(request, 'index.html', context)
