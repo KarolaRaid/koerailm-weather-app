@@ -1,8 +1,13 @@
 # Koerailm weather app - final project for SDA Python Course "PythonRemoteEE23"
-Koerailm is a fun weather app with a dog weather index and Estonian folk sayings, as well as current weather and hourly
-forecast. It allows users to search for a location by name or get user's current location. Koerailm is the final project
-for SDA Python Course "PythonRemoteEE23". It started as a group project, but then became a solo project.
-![Screenshot](koerailm_weather_app/images/koerailm_webpage.png)
+Koerailm is a simple weather app, displaying current weather and hourly forecast, as well as easy-to-understand
+dog weather index and Estonian folk sayings as this is mostly targeted to Estonian users.
+The webpage allows users to search for a location by name or get user's current location by latitude and longitude. 
+The dog weather index is a fun and unique tool for quickly evaluating weather conditions, 
+taking into account the amount of rainfall and wind speed (as it is defined in the word - koerailm).
+Koerailm is the final project for SDA Python Course "PythonRemoteEE23" that started as a group project, 
+but then became a solo project.
+
+![Screenshot](koerailm_weather_app/images/koerailm_demo.png)
 
 _______________________________________________________________________________________________________________________
 ## Technologies used

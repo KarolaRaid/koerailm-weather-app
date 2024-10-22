@@ -29,8 +29,8 @@ def current_weather(request):
             weather_data = get_weather_data(location, is_estonia)
 
     else:
-        location = 'Stockholm'
-        is_estonia = False
+        location = 'Tallinn'
+        is_estonia = True
         weather_data = get_weather_data(location, is_estonia)
 
     if context['error'] is None:
