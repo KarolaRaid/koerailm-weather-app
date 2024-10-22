@@ -5,6 +5,7 @@ from weather_data.translations import text_condition_trans, wind_direction_trans
 from weather_data.dog_weather_index import dog_weather_index
 from koerailm_weather_app.models import FolkSaying
 from weather_data.dates import date_today
+from django.conf import settings
 
 
 def current_weather(request):

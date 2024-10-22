@@ -7,7 +7,7 @@ taking into account the amount of rainfall and wind speed (as it is defined in t
 Koerailm is the final project for SDA Python Course "PythonRemoteEE23" that started as a group project, 
 but then became a solo project.
 
-![Screenshot](koerailm_weather_app/images/koerailm_demo.png)
+![Screenshot](koerailm_weather_app/static/media/koerailm_demo.png)
 
 _______________________________________________________________________________________________________________________
 ## Technologies used
