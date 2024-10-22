@@ -112,6 +112,7 @@
                             <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
                             <div class="h_hour">{{ weather.h_hour }}</div>
                             <div class="h_temp">{{ weather.h_temperature }}°C</div>
+                            <div class="h_precipitation">{{ weather.h_precipitation }} mm/h</div>
                             <div class="paws">
                                 {% for i in "01234" %}
                                     {% if forloop.counter0 < weather.h_dog_rating %}
