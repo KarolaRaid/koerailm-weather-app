@@ -12,7 +12,7 @@
 <div class="container">
     <header>
         <a href="/">
-            <img id="ai-seasonal-dog" src="https://i.imghippo.com/files/0TmWx1728769205.png"
+            <img id="ai-seasonal-dog" src="{% static 'media/koerailm_dog_autumn.png' %}"
                  alt="AI generated seasonal dog image">
         </a>
 
@@ -70,8 +70,6 @@
                 <div class="cw">
                     Pilvisus: {{ cloud }}%
                 </div>
-            <img src="{% static 'media/paw_black.png'%}" alt="black paw">
-
             </div>
 
 
@@ -82,11 +80,11 @@
                 <div class="paws">
                     {% for i in "01234" %}
                         {% if forloop.counter0 < dog_rating %}
-                            <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
-                                 alt="dog rating full">
+                            <img id="dog-paw" src="{% static 'media/paw_black.png' %}"
+                                 alt="paw black">
                         {% else %}
-                            <img id="dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png"
-                                 alt="dog rating zero">
+                            <img id="dog-paw" src="{% static 'media/paw_empty.png' %}"
+                                 alt="paw empty">
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -117,11 +115,11 @@
                             <div class="paws">
                                 {% for i in "01234" %}
                                     {% if forloop.counter0 < weather.h_dog_rating %}
-                                        <img id="h-dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
-                                             alt="dog rating full">
+                                        <img id="h-dog-paw" src="{% static 'media/paw_black.png' %}"
+                                             alt="paw black">
                                     {% else %}
-                                        <img id="h-dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png"
-                                             alt="dog rating zero">
+                                        <img id="h-dog-paw" src="{% static 'media/paw_empty.png' %}"
+                                             alt="paw empty">
                                     {% endif %}
                                 {% endfor %}
                             </div>
