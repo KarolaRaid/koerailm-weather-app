@@ -4,6 +4,7 @@ from weather_data.api import get_weather_data, get_weather_data_by_geolocation, 
 from weather_data.translations import text_condition_trans, wind_direction_trans
 from weather_data.dog_weather_index import dog_weather_index
 from koerailm_weather_app.models import FolkSaying
+from weather_data.dates import date_today
 
 
 def current_weather(request):
@@ -62,6 +63,8 @@ def current_weather(request):
         context['latitude'] = latitude
         context['longitude'] = longitude
 
+        context['date_today'] = date_today()
+
         context['dog_rating'] = dog_weather_index(wind_kmh, precipitation)
 
         current_month = datetime.now().month
@@ -95,7 +98,8 @@ def current_weather(request):
                 'h_hour': hour_data.get('time')[11:16],
                 'h_temperature': hour_data.get('temp_c'),
                 'h_icon': hour_data.get('condition').get('icon'),
-                'h_humidity': hour_data.get('humidity')
+                'h_dog_rating': dog_weather_index(hour_data.get('wind_kph'),
+                                                  hour_data.get('precip_mm'))
             })
 
     return render(request, 'index.html', context)

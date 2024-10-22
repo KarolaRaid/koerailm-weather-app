@@ -82,7 +82,7 @@ a {
 
 ::placeholder {
     font-family: Georgia, serif;
-    color: #2270a3;
+    color: #307db0;
     font-style: italic;
     font-size: 14px;
     opacity: 90%;
@@ -92,8 +92,12 @@ a {
     margin: 10px;
 }
 
-h3 {
+h2 {
     margin-left: 10px;
+}
+
+.cw_date {
+    font-size: 15px;
 }
 
 .cw_condition {
@@ -103,7 +107,7 @@ h3 {
 
 .weather-image {
     float: right;
-    margin-right: 680px;
+    margin-right: 675px;
 }
 
 .cw_temperature {
@@ -119,14 +123,28 @@ h3 {
     font-style: italic;
 }
 
-#paws {
-    margin: 7px;
+h6 {
+    font-weight: normal;
+    font-style: italic;
+    color: #307db0;
+    font-size: 12px;
+    margin: 0 0 0 10px;
+    opacity: 95%;
+}
+
+.paws {
+    margin: 9px;
 }
 
 #dog-paw {
-    width: 35px;
+    width: 33px;
     height: auto;
     padding: 1px;
+}
+
+#h-dog-paw {
+    width: 19px;
+    height: auto;
 }
 
 #hourly-forecast-elements {

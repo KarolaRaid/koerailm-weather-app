@@ -31,7 +31,8 @@
 
     <div class="content">
         <form method="GET" action={% url 'current_weather' %}>
-            <input class="box location-search" type="text" name="location_search" placeholder="Otsi asukohta..."
+            <input class="box location-search" type="text" name="location_search"
+                   placeholder='Otsi asukohta... (täpsemaks otsinguks proovi lisada riigikood, nt. "Riga, LV")'
                    required>
             <span><button type="submit" class="button box clickable">Otsi</button></span>
             <span><button class="button box clickable" onclick="user_location()">Sinu asukoht</button></span>
@@ -45,21 +46,20 @@
 
             <div id="current-weather" class="box">
                 <h2>Asukoht: {{ location }}, {{ country }}</h2>
-                <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"><br></span>
-                <span class="cw_condition cw">{{ condition_text }}</span>
+                <span><img class="weather-image cw" src="{{ icon }}" alt="current weather icon"></span>
+                <div class="cw_date cw">{{ date_today }}</div>
+                <span class="cw_condition cw">{{ condition_text }}<br></span>
                 <span class="cw_temperature cw">
                     Temperatuur: {{ temperature }}°C<br>
                 </span>
                 <span class="cw_temperature cw feelslike">
                 Tundub nagu: {{ temperature_feelslike }}°C<br>
                 </span>
-
-
-                <div class="cw_humidity cw">
-                    Niiskustase: {{ humidity }}%
-                </div>
                 <div class="cw_humidity cw">
                     Sademed: {{ precipitation }} mm/h<br>
+                </div>
+                <div class="cw_humidity cw">
+                    Niiskustase: {{ humidity }}%
                 </div>
                 <div class="cw_wind cw">
                     Tuule kiirus {{ wind_kmh }} km/h ehk {{ wind_ms }} m/s
@@ -77,7 +77,8 @@
 
             <div id="dog-weather-index" class="box">
                 <h4>Koerailmaindeks</h4>
-                <div id="paws">
+                <h6>Koerailmaindeks hindab ilma 0-5 käpa skaalal, arvestades sademeid ja tuule kiirust.</h6>
+                <div class="paws">
                     {% for i in "01234" %}
                         {% if forloop.counter0 < dog_rating %}
                             <img id="dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
@@ -105,14 +106,24 @@
             </div>
 
             <div id="hourly-forecast" class="box">
-                <h4>Hourly Forecast</h4>
+                <h4>Tunniprognoos</h4>
                 <div id="hourly-forecast-elements">
                     {% for weather in hourly_weather_data %}
                         <div class="hourly-forecast-data">
                             <img src="{{ weather.h_icon }}" alt="hourly forecast icon"><br>
                             <div class="h_hour">{{ weather.h_hour }}</div>
                             <div class="h_temp">{{ weather.h_temperature }}°C</div>
-                            <div class="h_hum">Niiskus: {{ weather.h_humidity }}%</div>
+                            <div class="paws">
+                                {% for i in "01234" %}
+                                    {% if forloop.counter0 < weather.h_dog_rating %}
+                                        <img id="h-dog-paw" src="https://i.imghippo.com/files/Rds5k1728770794.png"
+                                             alt="dog rating full">
+                                    {% else %}
+                                        <img id="h-dog-paw" src="https://i.imghippo.com/files/RKTdZ1728769730.png"
+                                             alt="dog rating zero">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                             <br>
                         </div>
                     {% endfor %}
