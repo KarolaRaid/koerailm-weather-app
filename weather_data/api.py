@@ -52,7 +52,7 @@ def get_weather_data_by_geolocation(latitude, longitude):
     lon = round(float(longitude), 4)
 
     api_key = config('WEATHER_API_KEY')
-    url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={lat},{lon}'
+    url = f'http://api.weatherapi.com/v1/forecast.json?key={api_key}&days=2&q={lat},{lon}'
 
     response = requests.get(url)
 
