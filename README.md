@@ -4,8 +4,7 @@ dog weather index and Estonian folk sayings as this is mostly targeted to Estoni
 The webpage allows users to search for a location by name or get user's current location by latitude and longitude. 
 The dog weather index is a fun and unique tool for quickly evaluating weather conditions, 
 taking into account the amount of rainfall and wind speed (as it is defined in the word - koerailm).
-Koerailm is the final project for SDA Python Course "PythonRemoteEE23" that started as a group project, 
-but then became a solo project.
+Koerailm is the final project for SDA Python Course "PythonRemoteEE23" developed during autumn 2024.
 
 ![Screenshot](koerailm_weather_app/static/media/koerailm_demo.png)
 
