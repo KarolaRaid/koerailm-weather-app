@@ -60,4 +60,4 @@ pytest
 ```
 _______________________________________________________________________________________________________________________
 ## Credits
-This project was developed by Karola Raid with some smaller contributions from Alvar Lillemägi and Rauno Pole.
+This project was developed by Karola Raid.
